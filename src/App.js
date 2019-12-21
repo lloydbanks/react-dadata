@@ -1,12 +1,16 @@
 import React from 'react'
 import './App.css'
 import Header from './components/header'
+import Tabs from './components/tabs'
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header />
-    </div>
+      <main className="main" role="main">
+        <Tabs />
+      </main>
+    </>
   )
 }
 

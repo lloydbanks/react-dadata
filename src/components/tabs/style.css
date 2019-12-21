@@ -1,0 +1,110 @@
+/* Autocomplete */
+.react-autosuggest__container {
+    position: relative;
+}
+
+.react-autosuggest__suggestions-container--open {
+    position: absolute;
+    width: 100%;
+    background: #fff;
+    z-index: 1;
+    border: 1px solid #E5E5E5;
+    border-top: none;
+}
+
+.react-autosuggest__suggestions-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.react-autosuggest__suggestion {
+    padding: 10px 25px;
+}
+
+.react-autosuggest__suggestion--highlighted {
+    background: #f8f8f8;
+}
+
+.react-autosuggest__company {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.react-autosuggest__address {
+    font-size: 12px;
+}
+
+/* Tabs */
+.tabs__header {
+    display: -ms-flexbox;
+    display: flex; }
+
+.tabs__title {
+    margin-right: 8px;
+    padding: 8px 24px 11px;
+    font-size: 12px;
+    color: #B9B9B9;
+    background-color: #F8F8F8; }
+.tabs__title {
+    text-decoration: none;
+    color: #B9B9B9; }
+
+.tabs__title--active {
+    font-weight: bold;
+    color: #2B2829;
+    background-color: #fff;
+    border-top: 2px solid #f50634; }
+.tabs__title--active a {
+    color: #2B2829; }
+
+.tabs__content {
+    background-color: #fff;
+    padding: 32px 24px; }
+
+.tabs__search {
+    margin-bottom: 48px; }
+
+.tabs__hint {
+    color: #777; }
+
+.tabs__hint-icon {
+    font-size: 4em;
+    border: 3px solid;
+    border-radius: 50px;
+    width: 68px;
+    height: 68px;
+    line-height: 57px;
+    text-align: center;
+    margin-right: 32px;
+    color: #DFDFDF; }
+
+.tabs__saved-item {
+    padding: 0 15px;
+    border: 1px solid #DFDFDF;
+    border-radius: 3px;
+    margin-bottom: 20px; }
+.tabs__saved-item h2 {
+    font-size: 18px; }
+
+.tabs__props {
+    font-size: 12px; }
+
+.tabs__props-key {
+    margin-right: 15px; }
+
+.tabs__saved-item .tabs__props-key {
+    color: #777; }
+
+.tabs__saved-detail {
+    font-size: 10px; }
+
+.tabs__detail-left p:first-child {
+    margin-top: 0; }
+
+.tabs__detail-right {
+    background: #F8F8F8;
+    border-radius: 3px;
+    padding: 24px;
+    max-width: 208px;
+    margin-left: auto; }
