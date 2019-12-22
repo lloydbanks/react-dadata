@@ -1,20 +1,7 @@
 import React, { useState } from 'react'
 import './style.css'
 import Autosuggest from 'react-autosuggest'
-import { data } from '../../api/data'
-
-const getSuggestions = value => {
-  const inputValue = value.trim().toLowerCase()
-  const inputLength = inputValue.length
-
-  return inputLength === 0
-    ? []
-    : data['suggestions'].filter(
-        suggestion =>
-          suggestion.value.toLowerCase().includes(inputValue) ||
-          suggestion.data.inn.includes(inputValue)
-      )
-}
+import { searchCompanies } from '../../api'
 
 const renderSuggestion = suggestion => (
   <div>
@@ -33,6 +20,25 @@ const Search = ({ saved, onSave }) => {
   const [selected, setSelected] = useState('')
   const [value, setValue] = useState('')
 
+  const getMatchingCompany = (data, value) => {
+    const inputValue = value.trim().toLowerCase()
+    const inputLength = inputValue.length
+
+    return inputLength === 0
+      ? []
+      : data['suggestions'].filter(
+          suggestion =>
+            suggestion.value.toLowerCase().includes(inputValue) ||
+            suggestion.data.inn.includes(inputValue)
+        )
+  }
+
+  const loadSuggestions = value => {
+    searchCompanies({ query: value }).then(data => {
+      setSuggestions(getMatchingCompany(data, value))
+    })
+  }
+
   const getSuggestionValue = suggestion => {
     setSelected(suggestion)
 
@@ -40,7 +46,7 @@ const Search = ({ saved, onSave }) => {
   }
 
   const onSuggestionsFetchRequested = ({ value }) => {
-    setSuggestions(getSuggestions(value))
+    loadSuggestions(value)
   }
 
   const onSuggestionsClearRequested = () => {
@@ -95,8 +101,12 @@ const Search = ({ saved, onSave }) => {
               <p className="font-weight-bold">Юридический адрес</p>
               <p>{selected.data.address.unrestricted_value}</p>
 
-              <p className="font-weight-bold">Генеральный директор</p>
-              {selected.data.management.name}
+              {selected.data.management && (
+                <>
+                  <p className="font-weight-bold">Генеральный директор</p>
+                  {selected.data.management.name}
+                </>
+              )}
             </div>
             <div className="col-lg-4">
               <div className="tabs__detail-right">
@@ -106,18 +116,26 @@ const Search = ({ saved, onSave }) => {
                     {selected.data['inn']}
                   </span>
                 </p>
-                <p className="tabs__props">
-                  <span className="tabs__props-key font-weight-bold">КПП</span>
-                  <span className="tabs__props-value">
-                    {selected.data['kpp']}
-                  </span>
-                </p>
-                <p className="tabs__props">
-                  <span className="tabs__props-key font-weight-bold">ОГРН</span>
-                  <span className="tabs__props-value">
-                    {selected.data['ogrn']}
-                  </span>
-                </p>
+                {selected.data.kpp && (
+                  <p className="tabs__props">
+                    <span className="tabs__props-key font-weight-bold">
+                      КПП
+                    </span>
+                    <span className="tabs__props-value">
+                      {selected.data['kpp']}
+                    </span>
+                  </p>
+                )}
+                {selected.data.ogrn && (
+                  <p className="tabs__props">
+                    <span className="tabs__props-key font-weight-bold">
+                      ОГРН
+                    </span>
+                    <span className="tabs__props-value">
+                      {selected.data['ogrn']}
+                    </span>
+                  </p>
+                )}
               </div>
             </div>
           </div>

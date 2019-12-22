@@ -1,3 +1,4 @@
+// demo data
 export const data = {
   suggestions: [
     {

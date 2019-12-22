@@ -78,34 +78,42 @@ const Tabs = () => {
                       </span>
                     </p>
                     <div className="tabs__saved-toggle" hidden={!isOpen}>
-                      <p className="tabs__props">
-                        <span className="tabs__props-key">КПП</span>
-                        <span className="tabs__props-value">
-                          {company.data.kpp}
-                        </span>
-                      </p>
-                      <p className="tabs__props">
-                        <span className="tabs__props-key">ОГРН</span>
-                        <span className="tabs__props-value">
-                          {company.data.ogrn}
-                        </span>
-                      </p>
-                      <p className="tabs__props">
-                        <span className="tabs__props-key">
-                          Юридический адрес
-                        </span>
-                        <span className="tabs__props-value">
-                          {company.data.address.unrestricted_value}
-                        </span>
-                      </p>
-                      <p className="tabs__props">
-                        <span className="tabs__props-key">
-                          Генеральный директор
-                        </span>
-                        <span className="tabs__props-value">
-                          {company.data.management.name}
-                        </span>
-                      </p>
+                      {company.data.kpp && (
+                        <p className="tabs__props">
+                          <span className="tabs__props-key">КПП</span>
+                          <span className="tabs__props-value">
+                            {company.data.kpp}
+                          </span>
+                        </p>
+                      )}
+                      {company.data.ogrn && (
+                        <p className="tabs__props">
+                          <span className="tabs__props-key">ОГРН</span>
+                          <span className="tabs__props-value">
+                            {company.data.ogrn}
+                          </span>
+                        </p>
+                      )}
+                      {company.data.address && (
+                        <p className="tabs__props">
+                          <span className="tabs__props-key">
+                            Юридический адрес
+                          </span>
+                          <span className="tabs__props-value">
+                            {company.data.address.unrestricted_value}
+                          </span>
+                        </p>
+                      )}
+                      {company.data.management && (
+                        <p className="tabs__props">
+                          <span className="tabs__props-key">
+                            Генеральный директор
+                          </span>
+                          <span className="tabs__props-value">
+                            {company.data.management.name}
+                          </span>
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div
