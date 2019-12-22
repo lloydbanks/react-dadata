@@ -19,6 +19,11 @@
     border-top: 2px solid #f50634; }
 .tabs__title--active a {
     color: #2B2829; }
+.tabs__title--active .tabs__title-total {
+    color: #f50634; }
+
+.tabs__title-total {
+    font-weight: bold; }
 
 .tabs__content {
     background-color: #fff;
@@ -86,3 +91,11 @@
     padding: 24px;
     max-width: 208px;
     margin-left: auto; }
+
+@media (max-width: 767px) {
+    .tabs__hint-icon {
+        width: 34px;
+        height: 34px;
+        line-height: 25px;
+        font-size: 2em; }
+}

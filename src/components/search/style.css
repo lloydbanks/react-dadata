@@ -1,6 +1,5 @@
 .react-autosuggest__container {
-    position: relative;
-}
+    position: relative; }
 
 .react-autosuggest__suggestions-container--open {
     position: absolute;
@@ -8,28 +7,22 @@
     background: #fff;
     z-index: 1;
     border: 1px solid #E5E5E5;
-    border-top: none;
-}
+    border-top: none; }
 
 .react-autosuggest__suggestions-list {
     margin: 0;
     padding: 0;
-    list-style: none;
-}
+    list-style: none; }
 
 .react-autosuggest__suggestion {
-    padding: 10px 25px;
-}
+    padding: 10px 25px; }
 
 .react-autosuggest__suggestion--highlighted {
-    background: #f8f8f8;
-}
+    background: #f8f8f8; }
 
 .react-autosuggest__company {
     font-weight: bold;
-    margin-bottom: 5px;
-}
+    margin-bottom: 5px; }
 
 .react-autosuggest__address {
-    font-size: 12px;
-}
+    font-size: 12px; }

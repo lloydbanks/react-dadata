@@ -97,18 +97,18 @@ const Search = ({ saved, onSave }) => {
             </div>
           </div>
           <div className="row tabs__detail">
-            <div className="col-lg-8 tabs__detail-left">
+            <div className="col-xs-5 col-sm-8 tabs__detail-left">
               <p className="font-weight-bold">Юридический адрес</p>
               <p>{selected.data.address.unrestricted_value}</p>
 
               {selected.data.management && (
                 <>
                   <p className="font-weight-bold">Генеральный директор</p>
-                  {selected.data.management.name}
+                  <p>{selected.data.management.name}</p>
                 </>
               )}
             </div>
-            <div className="col-lg-4">
+            <div className="col-xs-7 col-sm-4">
               <div className="tabs__detail-right">
                 <p className="tabs__props">
                   <span className="tabs__props-key font-weight-bold">ИНН</span>

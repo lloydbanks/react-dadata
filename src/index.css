@@ -19,12 +19,7 @@ body {
   background-color: #F8F8F8;
   font-family: Verdana, Arial, serif;
   font-size: 14px;
-  color: #2B2829;
-  transition: all .4s .3s ease-in; }
-
-body, html {
-  min-height: 100vh;
-  overflow: hidden; }
+  color: #2B2829; }
 
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
 /**

@@ -53,7 +53,9 @@ const Tabs = () => {
             onClick={e => toggleTab(e, 'saved')}
           >
             Сохраненные организации{' '}
-            {!!saved.length && <strong>({saved.length})</strong>}
+            {!!saved.length && (
+              <span className="tabs__title-total">({saved.length})</span>
+            )}
           </a>
         </div>
 
