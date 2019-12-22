@@ -29,6 +29,7 @@ const Search = ({ saved, onSave }) => {
       : data['suggestions'].filter(
           suggestion =>
             suggestion.value.toLowerCase().includes(inputValue) ||
+            suggestion.data.address.value.toLowerCase().includes(inputValue) ||
             suggestion.data.inn.includes(inputValue)
         )
   }
