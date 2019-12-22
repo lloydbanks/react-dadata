@@ -38,7 +38,7 @@
     height: 68px;
     line-height: 57px;
     text-align: center;
-    margin-right: 32px;
+    margin-right: 27px;
     color: #DFDFDF; }
 
 .tabs__saved-item {
@@ -48,6 +48,14 @@
     margin-bottom: 20px; }
 .tabs__saved-item h2 {
     font-size: 18px; }
+
+.tabs__actions {
+    font-size: 16px;
+    display: flex;
+    flex-direction: column; }
+
+.tabs__actions-delete {
+    flex-grow: 1; }
 
 .tabs__detail {
     margin-bottom: 32px;
@@ -63,7 +71,11 @@
     color: #777; }
 
 .tabs__saved-detail {
-    font-size: 10px; }
+    font-size: 10px;
+    color: #777; }
+.tabs__saved-detail .fa {
+    margin-left: 3px;
+    vertical-align: middle; }
 
 .tabs__detail-left p:first-child {
     margin-top: 0; }

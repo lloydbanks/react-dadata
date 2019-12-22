@@ -13,6 +13,10 @@ input:focus {
     outline-offset: 0;
     border: 1px solid #FAE29F; }
 
+button:focus {
+    outline: none;
+    outline-offset: 0; }
+
 .btn {
     padding: 16px 38px;
     border: none;
@@ -27,7 +31,9 @@ input:focus {
     background-color: #c30529; }
 
 .btn--done {
-    color: #B9B9B9; }
+    color: #B9B9B9;
+    padding: 16px 0;
+    cursor: initial; }
 
 input {
     background: #FFFFFF;
@@ -54,3 +60,6 @@ input {
 
 .font-weight-bold {
     font-weight: bold; }
+
+.fb-a {
+    flex-basis: auto; }

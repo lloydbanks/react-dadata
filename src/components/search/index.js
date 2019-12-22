@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import './style.css'
 import Autosuggest from 'react-autosuggest'
 import { data } from '../../api/data'
-import './style.css'
 
 const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase()
@@ -28,10 +28,11 @@ const renderSuggestion = suggestion => (
   </div>
 )
 
-const Search = () => {
+const Search = ({ saved, onSave }) => {
   const [suggestions, setSuggestions] = useState([])
   const [selected, setSelected] = useState('')
   const [value, setValue] = useState('')
+
   const getSuggestionValue = suggestion => {
     setSelected(suggestion)
 
@@ -46,36 +47,49 @@ const Search = () => {
     setSuggestions([])
   }
 
+  const isSaved =
+    saved.findIndex(company => company.value === selected.value) > -1
+
   return (
     <>
-      <div className="tabs__search">
-        <p>Организация или ИП</p>
+      <div className="tabs__search row">
+        <div className="col-xs-12">
+          <p>Организация или ИП</p>
 
-        <Autosuggest
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={onSuggestionsClearRequested}
-          getSuggestionValue={getSuggestionValue}
-          renderSuggestion={renderSuggestion}
-          focusInputOnSuggestionClick={false}
-          inputProps={{
-            placeholder: 'Введите название, ИНН или адрес организации',
-            value,
-            onChange: (e, { newValue }) => setValue(newValue)
-          }}
-        />
+          <Autosuggest
+            suggestions={suggestions}
+            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+            onSuggestionsClearRequested={onSuggestionsClearRequested}
+            getSuggestionValue={getSuggestionValue}
+            renderSuggestion={renderSuggestion}
+            focusInputOnSuggestionClick={false}
+            inputProps={{
+              placeholder: 'Введите название, ИНН или адрес организации',
+              value,
+              onChange: (e, { newValue }) => setValue(newValue)
+            }}
+          />
+        </div>
       </div>
       {!selected ? (
         <div className="tabs__hint row middle-xs">
-          <div className="tabs__hint-icon">+</div>
-          <div className="tabs__hint-text">
-            Для добавления новой организации <br /> введите ее название, ИНН или
-            адрес.
+          <div className="col-xs-2 fb-a">
+            <div className="tabs__hint-icon">+</div>
+          </div>
+          <div className="col-xs-10">
+            <div className="tabs__hint-text">
+              Для добавления новой организации <br /> введите ее название, ИНН
+              или адрес.
+            </div>
           </div>
         </div>
       ) : (
-        <div>
-          <h2 className="h2-border mt-0">{selected.value}</h2>
+        <>
+          <div className="row">
+            <div className="col-xs-12">
+              <h2 className="h2-border mt-0">{selected.value}</h2>
+            </div>
+          </div>
           <div className="row tabs__detail">
             <div className="col-lg-8 tabs__detail-left">
               <p className="font-weight-bold">Юридический адрес</p>
@@ -107,12 +121,25 @@ const Search = () => {
               </div>
             </div>
           </div>
-
-          <button className="btn btn--primary">Сохранить</button>
-          <button className="btn btn--done" hidden>
-            <i className="fa fa-check" aria-hidden="true"></i> Сохранено
-          </button>
-        </div>
+          <div className="row">
+            <div className="col-lg-12">
+              {!isSaved ? (
+                <button
+                  className="btn btn--primary"
+                  onClick={() => {
+                    onSave([...saved, selected])
+                  }}
+                >
+                  Сохранить
+                </button>
+              ) : (
+                <button className="btn btn--done" disabled>
+                  <i className="fa fa-check" aria-hidden="true"></i> Сохранено
+                </button>
+              )}
+            </div>
+          </div>
+        </>
       )}
     </>
   )
